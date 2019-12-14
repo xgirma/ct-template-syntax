@@ -1,6 +1,9 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { Customer } from './customer';
+import { Car } from "./cars";
+import { ICar } from './models/car';
+import { ICustomer } from './models/customer';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +15,14 @@ export class AppComponent {
   title = 'ct-template-syntax';
   currentCustomer = 'Foo';
   isUnchanged = true;
-  customers = [
-    new Customer(1, "Foo"),
-    new Customer(2, "Bar")
+  customers: ICustomer[] = [
+    new Customer(1, 'Foo'),
+    new Customer(2, 'Bar')
+  ];
+
+  cars: ICar[] = [
+    new Car(1969, 'Kia'),
+    new Car(2069, 'Fiat')
   ];
 
   getVal() {
@@ -22,7 +30,9 @@ export class AppComponent {
   }
 
   deleteCustomer(id) {
-    this.customers = this.customers.filter(customer => customer.id !== id)
+    const keys = ['id'];
+    // @ts-ignore
+    this.customers = keys.reduce((result, id) => ({...result, [id]: this.customers[id]}), {});
   }
 
   getHTMLAttributeValue(): any {
@@ -34,7 +44,7 @@ export class AppComponent {
   }
 
   toggleDisabled(): any {
-    let testButton = <HTMLInputElement> document.getElementById('testButton');
+    const testButton = document.getElementById('testButton') as HTMLInputElement;
     testButton.disabled = !testButton.disabled;
     console.warn(testButton.disabled);
   }

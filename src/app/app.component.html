@@ -1,9 +1,17 @@
-<h3>Current customer: {{ currentCustomer }}</h3>
+<h3 id="interpolation">Current customer: {{ currentCustomer }}</h3>
+
 <!-- "The sum of 1 + 1 is 2" -->
 <p>The sum of 1 + 1 is {{1 + 1}}.</p>
-<!-- "The sum of 1 + 1 is not 4" -->
-<p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
 
+<!-- "The sum of 1 + 1 is not 4" -->
+<p id="expression">The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
+
+<p>Cars:</p>
+<ul>
+  <li *ngFor="let car of cars">{{car.make}} {{car.year}}</li>
+</ul>
+
+<p>Customers:</p>
 <ul>
   <li *ngFor="let customer of customers">
     {{customer.name}} :

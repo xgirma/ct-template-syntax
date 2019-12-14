@@ -9,6 +9,11 @@ HTML is the language of the Angular template. Almost all HTML syntax is valid te
 Interpolation refers to embedding expressions into marked up text.
 ```html
 <h3>Current customer: {{ currentCustomer }}</h3>
+
+```
+
+The text between the braces is a template expression that Angular first evaluates and then converts to a string.
+```html
 <p>The sum of 1 + 1 is {{1 + 1}}.</p>
 <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
 
