@@ -1,9 +1,8 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { Customer } from './customer';
-import { Car } from "./cars";
+import { Car } from './cars';
 import { ICar } from './models/car';
-import { ICustomer } from './models/customer';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent {
   title = 'ct-template-syntax';
   currentCustomer = 'Foo';
   isUnchanged = true;
-  customers: ICustomer[] = [
+  customers = [
     new Customer(1, 'Foo'),
     new Customer(2, 'Bar')
   ];
@@ -30,9 +29,7 @@ export class AppComponent {
   }
 
   deleteCustomer(id) {
-    const keys = ['id'];
-    // @ts-ignore
-    this.customers = keys.reduce((result, id) => ({...result, [id]: this.customers[id]}), {});
+    this.customers = this.customers.filter(customer => customer.id !== id);
   }
 
   getHTMLAttributeValue(): any {

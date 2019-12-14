@@ -14,7 +14,7 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  beforeEach(()=> {
+  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -29,7 +29,7 @@ describe('AppComponent', () => {
     expect(app.querySelector('#interpolation').textContent).toContain(component.currentCustomer);
   });
 
-  it('interpolation: expression', ()=> {
+  it('interpolation: expression', () => {
     expect(app.querySelector('#expression').textContent).toContain('102');
   });
 });

@@ -1,4 +1,4 @@
 export interface ICar {
-  year: number,
-  make: string
+  year: number;
+  make: string;
 }
