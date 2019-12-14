@@ -1,4 +1,4 @@
 export interface ICustomer {
-  id: number,
-  name: string
+  id: number;
+  name: string;
 }

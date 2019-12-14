@@ -1,56 +1,40 @@
-<h3 id="interpolation">Current customer: {{ currentCustomer }}</h3>
-
-<!-- "The sum of 1 + 1 is 2" -->
+<!--interpolation-->
+<h3>1. Interpolation</h3>
+<p id="interpolation">Current customer: {{ currentCustomer }}</p>
 <p>The sum of 1 + 1 is {{1 + 1}}.</p>
 
-<!-- "The sum of 1 + 1 is not 4" -->
+
+<!--expression-->
+<h3>2. Expression</h3>
 <p id="expression">The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
 
+
+<!--template input variable, car-->
+<h3>3. Template input variable</h3>
 <p>Cars:</p>
 <ul>
-  <li *ngFor="let car of cars">{{car.make}} {{car.year}}</li>
+  <li *ngFor="let car of cars" class="cars">
+    {{car.make}} {{car.year}}
+  </li>
 </ul>
 
+
+<!--template reference variable, firstNameInput-->
+<h3>4. Template reference variable </h3>
+<p *ngIf="fullName"  id="fullName">Full Name: {{fullName}}</p>
+<label id="templateRefVariable">
+  First Name:
+  <input type="text" #firstNameInput>
+  <button (click)="show(firstNameInput)">Show</button>
+</label>
+
+
+<!--Template statements-->
+<h3>5. Template Statement</h3>
 <p>Customers:</p>
-<ul>
+<ul id="templateStatements">
   <li *ngFor="let customer of customers">
     {{customer.name}} :
-    <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button></li>
+    <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button>
+  </li>
 </ul>
-
-<!-- One-way from data source to view target-->
-<div>
-  <h3>One-way from data source to view target</h3>
-  <p>Button disabled state bound to isUnchanged property</p>
-  <button [disabled]="isUnchanged">Disabled</button>
-</div>
-
-<!-- One-way from view target to data source -->
-<div (keyup)="0">
-  <h3>One-way from view target to data source: HTML attributes and DOM properties</h3>
-  <p>1. Use the inspector to see the HTML attribute and DOM property values. Click the buttons to log values to the console.</p>
-
-  <label>HTML Attribute Initializes to "Sarah":
-    <input type="text" value="Sarah" #bindingInput></label>
-  <div>
-    <button (click)="getHTMLAttributeValue()">Get HTML attribute value</button> Won't change.
-  </div>
-
-  <div>
-    <button (click)="getDOMPropertyValue()">Get DOM property value</button> Changeable. Angular works with these.
-  </div>
-
-  <p>2. Change the name in the input and click the buttons again.</p>
-</div>
-
-<!-- Two way -->
-<div>
-  <h3>Disabled property vs. attribute</h3>
-  <p>Use the inspector to see the Test Button work and its disabled property toggle.</p>
-  <div>
-    <button id="testButton" (click)="working()">Test Button</button>
-  </div>
-  <div>
-    <button (click)="toggleDisabled()">Toggle disabled property for Test Button</button>
-  </div>
-</div>
