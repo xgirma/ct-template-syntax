@@ -3,7 +3,9 @@
 ## HTML in templates
 HTML is the language of the Angular template. Almost all HTML syntax is valid template syntax. 
 
-    The <script> element is a notable exception; it is forbidden, eliminating the risk of script injection attacks. In practice, <script> is ignored and a warning appears in the browser console. See the Security page for details.
+    The <script> element is a notable exception; it is forbidden, eliminating the risk of script injection attacks. 
+    
+    In practice, <script> is ignored and a warning appears in the browser console.
 
 ## Interpolation {{...}}link
 Interpolation refers to embedding expressions into marked up text.
@@ -18,6 +20,33 @@ The text between the braces is a template expression that Angular first evaluate
 <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
 
 ```
+
+An expression may also refer to properties of the template's context such as a **template input variable**, 
+let _cars_, or a **template reference variable**, #firstNameInput.
+
+
+```html
+<ul>
+  <li *ngFor="let car of cars">{{car.make}} {{car.year}}</li>
+</ul>
+
+```
+_template input variable_
+
+    The customer in {{car.make}} refers to the template input variable, not the component's property.
+
+```html
+<p *ngIf="fullName" id="fullName">Full Name: {{fullName}}</p>
+<label id="templateRefVariable">
+  First Name:
+  <input type="text" #firstNameInput>
+  <button (click)="show(firstNameInput)">Show</button>
+</label>
+
+```
+_template reference variable_
+
+**Template expressions cannot refer to anything in the global namespace**, except undefined. They can't refer to window or document. Additionally, **they can't call console.log() or Math.max()** and they are restricted to referencing members of the expression context.
 
 ## Expression guidelines
 When using template expressions follow these guidelines:
@@ -34,11 +63,27 @@ Expressions should finish quickly or the user experience may drag, especially on
 A template expression should not change any application state other than the value of the target property.
 
 ## Template statements
-A template statement responds to an **event** raised by a binding target such as an element, component, or directive.
+A template statement responds to an **event** raised by a binding target such as an element, component, or directive. 
+Template statement appearing in quotes to the right of the = symbol as in (event)="statement". e.g. _(click)="deleteCustomer(customer.id)"_
 
-    Template expressions cannot refer to anything in the global namespace, except undefined. They can't refer to window or document. Additionally, they can't call console.log() or Math.max() and they are restricted to referencing members of the expression context.
+```html
+<ul>
+  <li *ngFor="let customer of customers">
+    {{customer.name}} :
+    <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button></li>
+</ul>
 
-    A template statement has a side effect. That's the whole point of an event. It's how you update application state from user action.
+```
+
+    Template expressions cannot refer to anything in the global namespace, except undefined. 
+    
+    They can't refer to window or document. Additionally, they can't call console.log() or 
+    
+    Math.max() and they are restricted to referencing members of the expression context.
+
+    A template statement has a side effect. That's the whole point of an event. 
+    
+    It's how you update application state from user action.
     
 Responding to events is the other side of Angular's "unidirectional data flow". You're free to change anything, anywhere, during this turn of the event loop.
 
@@ -65,84 +110,18 @@ The statement context is typically the component instance. The deleteHero in (cl
 
 ```
 
-## Binding syntax: an overview
-Data-binding is a mechanism for coordinating what users see, specifically with application data values.
+The statement context may also refer to 
 
-Angular provides many kinds of data-binding. Binding types can be grouped into three categories distinguished by the direction of data flow:
-
-    From the source-to-view
+    properties of the template's own context
     
-    From view-to-source
+    the template $event object
+     
+    a template input variable (let hero), and 
     
-    Two-way sequence: view-to-source-to-view
+    a template reference variable (#heroForm)
 
 
-### One-way from data source to view target
-
-| Type  | Syntax  |
-|:---|:---|
-| Interpolation, Property  | {{expression}}  |
-| Attribute, Class  | [target]="expression" |
-| Style | bind-target="expression" |
-
-```html
-<div>
-  <p>Button disabled state bound to isUnchanged property</p>
-  <button [disabled]="isUnchanged">Disabled</button>
-</div>
-
-```
-
-### One-way from view target to data source
-
-| Type  | Syntax  |
-|:---|:---|
-| Event  | (target)="statement"  |
-|  | on-target="statement" |
-
-```html
-<div (keyup)="0">
-  <h3>One-way from view target to data source: HTML attributes and DOM properties</h3>
-  <p>1. Use the inspector to see the HTML attribute and DOM property values. Click the buttons to log values to the console.</p>
-
-  <label>HTML Attribute Initializes to "Sarah":
-    <input type="text" value="Sarah" #bindingInput></label>
-  <div>
-    <button (click)="getHTMLAttributeValue()">Get HTML attribute value</button> Won't change.
-  </div>
-
-  <div>
-    <button (click)="getDOMPropertyValue()">Get DOM property value</button> Changeable. Angular works with these.
-  </div>
-
-  <p>2. Change the name in the input and click the buttons again.</p>
-</div>
-
-```
-
-### Two-way
-
-| Type  | Syntax  |
-|:---|:---|
-| Two-way  | [(target)]="expression"  |
-|  | bindon-target="expression" |
-
-```html
-<div>
-  <h3>Disabled property vs. attribute</h3>
-  <p>Use the inspector to see the Test Button work and its disabled property toggle.</p>
-  <div>
-    <button id="testButton" (click)="working()">Test Button</button>
-  </div>
-  <div>
-    <button (click)="toggleDisabled()">Toggle disabled property for Test Button</button>
-  </div>
-</div>
-
-```
-Binding types other than interpolation have a target name to the left of the equal sign, either surrounded by punctuation, [] or (), or preceded by a prefix: **bind-, on-, bindon-**.
-
-
-
-## Source
+## Source/References
 [Angular Documentation](https://angular.io/guide/template-syntax)
+
+[Working with Angular 5 Template Reference Variables](https://itnext.io/working-with-angular-5-template-reference-variable-e5aa59fb9af)
