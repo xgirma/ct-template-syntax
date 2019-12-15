@@ -260,13 +260,14 @@ Attributes initialize DOM properties and then they are done. Property values can
     expect(inputBox.getAttribute('value')).toEqual('Sarah');
     expect(inputBox.value).toEqual('Sarah');
 
-    inputBox.value = 'Sally';
+    inputBox.value = 'Foo';
     inputBox.dispatchEvent(new Event('input'));
     fixture.detectChanges();
     await fixture.whenStable();
 
-    expect(inputBox.getAttribute('value')).toEqual('Sally');
-    expect(inputBox.value).toEqual('Foo');
+    const inputBoxNow = fixture.debugElement.query(By.css('#htmlAtt > input')).nativeElement;
+    expect(inputBoxNow.getAttribute('value')).toEqual('Sarah');
+    expect(inputBoxNow.value).toEqual('Foo');
   });
 
 ```
@@ -281,6 +282,9 @@ When the user enters "Sally" into the <input>, the DOM element value property be
 ```
 
 Use property binding over attribute binding as it is more intuitive (being a boolean value), has a shorter syntax, and is more performant.
+
+## Property binding [property]
+Use property binding to set properties of target elements or directive @Input() decorators.
 
 
 ## Source

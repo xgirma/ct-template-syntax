@@ -75,7 +75,7 @@ describe('AppComponent', () => {
   it('template $event object', async () => {
     expect(compiled.querySelector('#eventObject > p').textContent)
       .toEqual('Text Not submitted yet.');
-    const submitText = fixture.debugElement.query(By.css("#eventObject > button"));
+    const submitText = fixture.debugElement.query(By.css('#eventObject > button'));
     submitText.nativeElement.click();
     fixture.detectChanges();
     await fixture.whenStable();
@@ -108,7 +108,8 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     await fixture.whenStable();
 
-    expect(inputBox.getAttribute('value')).toEqual('Sarah');
-    expect(inputBox.value).toEqual('Foo');
+    const inputBoxNow = fixture.debugElement.query(By.css('#htmlAtt > input')).nativeElement;
+    expect(inputBoxNow.getAttribute('value')).toEqual('Sarah');
+    expect(inputBoxNow.value).toEqual('Foo');
   });
 });
