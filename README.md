@@ -1,4 +1,5 @@
 # Components & Templates: Template Syntax
+[![Build Status](https://travis-ci.com/xgirma/ct-template-syntax.svg?branch=master)](https://travis-ci.com/xgirma/ct-template-syntax)
 
 ## HTML in templates
 HTML is the language of the Angular template. Almost all HTML syntax is valid template syntax. 
