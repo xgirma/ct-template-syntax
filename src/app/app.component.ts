@@ -22,7 +22,7 @@ export class AppComponent {
     new Customer(2, 'Bar')
   ];
   text = 'Text Not submitted yet.';
-  flower = 'https://images.unsplash.com/photo-1519058497187-7167f17c6daf';
+  itemImageUrl = 'https://images.unsplash.com/photo-1519058497187-7167f17c6daf';
   myStyles = {
     'background-color': 'lime',
     'font-size': '20px',

@@ -49,7 +49,7 @@
 <!--source-to-view: attribute binding-->
 <h3>7. Source-to-view: attribute binding</h3>
 <div>
-  <img [src]="flower" height="250px" />
+  <img [src]="itemImageUrl" height="250px" />
 </div>
 
 <!--source-to-view: class binding-->
@@ -70,8 +70,25 @@
 </label>
 
 <!--html attribute vs dom property-->
-<h3>HTML attribute vs DOM property</h3>
+<h3>11. HTML attribute vs DOM property</h3>
 <label id="htmlAtt">
   Enter your name:
   <input type="text" value="Sarah">
 </label>
+
+<!--property binding-->
+<h3>12. Property binding</h3>
+<table>
+  <tr>
+    <th>Month</th><th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td><td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td><td>$80</td>
+  </tr>
+  <tr>
+    <td [colSpan]="2">Sum: $180</td>
+  </tr>
+</table>

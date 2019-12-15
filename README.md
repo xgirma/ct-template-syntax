@@ -1,6 +1,7 @@
 # Components & Templates: Template Syntax
 [![Build Status](https://travis-ci.com/xgirma/ct-template-syntax.svg?branch=master)](https://travis-ci.com/xgirma/ct-template-syntax)
 
+[Live Demo](https://xgirma.github.io/ct-template-syntax/)
 ## HTML in templates
 HTML is the language of the Angular template. Almost all HTML syntax is valid template syntax. 
 
@@ -186,7 +187,7 @@ _binding: property_
 
 ```html
 <div>
-  <img [src]="flower" height="250px" />
+  <img [src]="itemImageUrl" height="250px" />
 </div>
 
 ```
@@ -286,6 +287,43 @@ Use property binding over attribute binding as it is more intuitive (being a boo
 
 ## Property binding [property]
 Use property binding to set properties of target elements or directive @Input() decorators.
+
+**Property binding flows a value in one direction, from a component's property into a target element property.**
+
+```html
+<img [src]="itemImageUrl" height="250px" />
+
+```
+There's also the bind- prefix alternative:
+
+```html
+<img bind-src="itemImageUrl">
+```
+
+Here's an example of binding to the colSpan property. 
+**Notice that it's not colspan**, which is the attribute, spelled with a lowercase s
+
+```html
+<table>
+  <tr>
+    <th>Month</th><th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td><td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td><td>$80</td>
+  </tr>
+  <tr>
+    <td [colSpan]="2">Sum: $180</td>
+  </tr>
+</table>
+
+```
+### Avoid side effects
+Evaluation of a template expression should have no visible side effects.
+
+As a best practice, stick to properties and to methods that return values and avoid side effects.
 
 
 ## Source
