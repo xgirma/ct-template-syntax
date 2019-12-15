@@ -428,6 +428,13 @@ _list-item.component.ts_
 ```
 _list-item.component.html_
 
+### Remember the brackets
+The brackets, \[\], tell Angular to evaluate the template expression. If you omit the brackets, Angular treats the string as a constant
+
+```html
+<app-item-detail childItem="Passing a constant directly"></app-item-detail>
+
+```
 
 
 ## Source
