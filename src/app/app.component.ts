@@ -41,6 +41,7 @@ export class AppComponent {
       name: 'iPad'
     }
   ];
+  evilTitle = 'Template <script>alert("evil never sleeps")</script> Syntax';
 
   getVal() {
     return 100;

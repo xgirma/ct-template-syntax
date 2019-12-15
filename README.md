@@ -437,6 +437,36 @@ The brackets, \[\], tell Angular to evaluate the template expression. If you omi
 ```
 
 
+### One-time string initialization
+You should omit the brackets when all of the following are true:
+
+    1. The target property accepts a string value.
+
+    2. The string is a fixed value that you can put directly into the template.
+    
+    3. This initial value never changes
+    
+```html
+<app-item-detail childItem="Passing a constant directly"></app-item-detail>
+
+```
+
+### Property binding vs. interpolation
+You often have a choice between interpolation and property binding.
+
+```html
+<div><img [src]="itemImageUrl" height="250px" /></div>
+<div><img src={{itemImageUrl}} height="250px" /></div>
+```
+
+Interpolation is a convenient alternative to property binding in many cases. 
+When rendering data values as strings, there is no technical reason to prefer one form to the other, though readability tends to favor interpolation. 
+However, **when setting an element property to a non-string data value, you must use property binding**.
+
+## Attribute, class, and style bindings
+
+
+
 ## Source
 [Angular Documentation](https://angular.io/guide/template-syntax)
 
