@@ -116,10 +116,42 @@ The statement context may also refer to
     
     the template $event object
      
-    a template input variable (let hero), and 
+    a template input variable (let customer), and 
     
     a template reference variable (#heroForm)
 
+### Properties of the template's own context
+```html
+
+```
+
+### The template $event object
+```html
+
+```
+
+### A template input variable (let hero)
+
+```html
+<ul id="templateStatements">
+  <li *ngFor="let customer of customer">
+    {{customer.name}} :
+    <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button>
+  </li>
+</ul>
+
+```
+
+### a template reference variable (#firstNameInput)
+
+```html
+<label id="templateRefVariable">
+  First Name:
+  <input type="text" #firstNameInput>
+  <button (click)="show(firstNameInput)">Show</button>
+</label>
+
+```
 
 ## Source/References
 [Angular Documentation](https://angular.io/guide/template-syntax)
