@@ -332,3 +332,6 @@ As a best practice, stick to properties and to methods that return values and av
 [Working with Angular 5 Template Reference Variables](https://itnext.io/working-with-angular-5-template-reference-variable-e5aa59fb9af)
 
 [Style Binding & NgStyle in Angular 2](https://alligator.io/angular/style-binding-ngstyle-angular/)
+
+[Angular Mastery: Template Syntax](https://medium.com/angular-in-depth/angular-mastery-template-syntax-194bffe2ad6f)
+

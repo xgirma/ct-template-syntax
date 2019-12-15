@@ -32,10 +32,14 @@
     "@angular/language-service": "8.2.14",
     "@types/jasmine": "3.5.0",
     "@types/jasminewd2": "2.0.8",
+<<<<<<< HEAD
     "@types/node": "8.9.5",
     "angular-cli-ghpages": "^0.6.0",
+=======
+    "@types/node": "8.10.59",
+>>>>>>> 23664436f22b21cabfba26f0be4d3e1da584ba95
     "codelyzer": "5.2.0",
-    "jasmine-core": "3.4.0",
+    "jasmine-core": "3.5.0",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "4.1.0",
     "karma-chrome-launcher": "3.1.0",
