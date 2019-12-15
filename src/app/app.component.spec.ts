@@ -1,9 +1,10 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ListItemComponent } from './list-item/list-item.component';
 
 
 describe('AppComponent', () => {
@@ -14,7 +15,7 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent, ListItemComponent, ItemDetailComponent
       ],
       imports: [ FormsModule, ReactiveFormsModule ]
     }).compileComponents();

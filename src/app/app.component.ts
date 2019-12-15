@@ -29,6 +29,7 @@ export class AppComponent {
     'font-weight': 'bold'
   };
   message = 'Type here';
+  parentItem = 'Parent item passed to child';
 
   getVal() {
     return 100;

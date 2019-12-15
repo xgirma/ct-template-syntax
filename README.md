@@ -329,6 +329,49 @@ As a best practice, stick to properties and to methods that return values and av
 
 The template expression should evaluate to the type of value that the target property expects.
 
+#### Passing String
+```javascript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  parentItem = 'Parent item passed to child';
+
+}
+
+```
+_app.component.ts_
+
+```html
+<app-list-item [items]="currentItem"></app-list-item>
+```
+_app.component.html_
+
+```javascript
+import { Component, OnInit, Input } from '@angular/core';
+
+@Component({
+  selector: 'app-item-detail',
+  templateUrl: './item-detail.component.html',
+  styleUrls: ['./item-detail.component.css']
+})
+export class ItemDetailComponent implements OnInit {
+  @Input() childItem: string;
+}
+
+```
+_item-detail.component.ts_
+
+```html
+<p>{{childItem}}</p>
+```
+_item-detail.component.html_
+
+
 
 ## Source
 [Angular Documentation](https://angular.io/guide/template-syntax)
