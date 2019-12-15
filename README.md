@@ -325,6 +325,10 @@ Evaluation of a template expression should have no visible side effects.
 
 As a best practice, stick to properties and to methods that return values and avoid side effects.
 
+### Return the proper type
+
+The template expression should evaluate to the type of value that the target property expects.
+
 
 ## Source
 [Angular Documentation](https://angular.io/guide/template-syntax)
