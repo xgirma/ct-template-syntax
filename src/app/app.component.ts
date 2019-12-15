@@ -19,12 +19,17 @@ export class AppComponent {
   fullName: string;
   // Reference firstNameInput variable inside Component
   @ViewChild('firstName', { static: false }) nameInputRef: ElementRef;
-  buttonSwitch = false;
   customers = [
     new Customer(1, 'Foo'),
     new Customer(2, 'Bar')
   ];
   text = 'Text Not submitted yet.';
+  flower = 'https://images.unsplash.com/photo-1519058497187-7167f17c6daf';
+  myStyles = {
+    'background-color': 'lime',
+    'font-size': '20px',
+    'font-weight': 'bold'
+  };
 
   getVal() {
     return 100;
@@ -38,7 +43,11 @@ export class AppComponent {
     this.customers = this.customers.filter(customer => customer.id !== id);
   }
 
-  submit($event) {
+  submitText($event) {
     this.text = 'Text Submitted successfully!';
+  }
+
+  hasError() {
+    return true;
   }
 }

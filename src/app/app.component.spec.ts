@@ -71,4 +71,16 @@ describe('AppComponent', () => {
     const customersNow = fixture.debugElement.queryAll(By.css('#templateStatements > li > button'));
     expect(customersNow.length).toEqual(1);
   });
+
+  it('template $event object', async () => {
+    expect(compiled.querySelector('#eventObject > p').textContent)
+      .toEqual('Text Not submitted yet.');
+    const submitText = fixture.debugElement.query(By.css("#eventObject > button"));
+    submitText.nativeElement.click();
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('#eventObject > p').textContent)
+      .toEqual('Text Submitted successfully!');
+  });
 });

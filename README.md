@@ -147,8 +147,82 @@ The statement context may also refer to properties of the template's own context
 </label>
 
 ```
+Template statements cannot refer to anything in the global namespace. They can't refer to window or document. They can't call console.log or Math.max.
 
-## Source/References
+As with expressions, avoid writing complex template statements. A method call or simple property assignment should be the norm.
+
+## Binding syntax: an overview
+You could push values to and pull values from HTML. 
+
+Angular provides many kinds of data-binding
+
+1. source-to-view
+
+2. view-to-source
+
+3. view-to-source-to-view
+
+### source-to-view
+| Type  | Syntax |
+|---|---|
+| Interpolation  | {{expression}}  |
+| Property  | \[target\]="expression"  |
+| Attribute | bind-target="expression" |
+| Class  |   |
+| Style  |   |
+
+```html
+<p>The sum of 1 + 1 is {{1 + 1}}.</p>
+
+```
+_binding: interpolation_
+
+```html
+<p id="interpolation">Current customer: {{ currentCustomer }}</p>
+
+```
+_binding: property_
+
+```html
+<div>
+  <img [src]="flower" height="250px" />
+</div>
+
+```
+_binding: attribute_
+
+```html
+<div [className]="hasError()? 'red' : 'green'">Class binding</div>
+
+```
+_binding: class_
+
+```html
+<p [ngStyle]="myStyles">
+  Quite something!
+</p>
+
+```
+_binding: style_
+
+### view-to-source
+| Type  | Syntax |
+|---|---|
+| Event  | \(target\)="statement"  |
+|  | on-target="statement" |
+
+```html
+<ul id="templateStatements">
+  <li *ngFor="let customer of customers">
+    {{customer.name}} :
+    <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button>
+  </li>
+</ul>
+```
+
+## Source
 [Angular Documentation](https://angular.io/guide/template-syntax)
 
 [Working with Angular 5 Template Reference Variables](https://itnext.io/working-with-angular-5-template-reference-variable-e5aa59fb9af)
+
+[Style Binding & NgStyle in Angular 2](https://alligator.io/angular/style-binding-ngstyle-angular/)

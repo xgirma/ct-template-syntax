@@ -40,8 +40,24 @@
 </ul>
 
 <!--template $event object-->
-<h3>Template $event object</h3>
+<h3>6. Template $event object</h3>
 <div id="eventObject">
   <p>{{ text }}</p>
-  <button class="btn" (click)='submit($event)'>Submit</button>
+  <button class="btn" (click)='submitText($event)'>Submit Text</button>
 </div>
+
+<!--source-to-view: attribute binding-->
+<h3>7. Source-to-view: attribute binding</h3>
+<div>
+  <img [src]="flower" height="250px" />
+</div>
+
+<!--source-to-view: class binding-->
+<h3>8. Source-to-view: class binding</h3>
+<div [className]="hasError()? 'red' : 'green'">Class binding</div>
+
+<!--source-to-view: class binding-->
+<h3>9. Source-to-view: style binding</h3>
+<p [ngStyle]="myStyles">
+  Quite something!
+</p>
