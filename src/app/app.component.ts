@@ -10,15 +10,13 @@ import { ICar } from './models/car';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild('firstName', { static: false }) nameInputRef: ElementRef;
   currentCustomer = 'Foo';
   cars: ICar[] = [
     new Car(1969, 'Kia'),
     new Car(2069, 'Fiat')
   ];
-
   fullName: string;
-  // Reference firstNameInput variable inside Component
-  @ViewChild('firstName', { static: false }) nameInputRef: ElementRef;
   customers = [
     new Customer(1, 'Foo'),
     new Customer(2, 'Bar')
@@ -30,6 +28,7 @@ export class AppComponent {
     'font-size': '20px',
     'font-weight': 'bold'
   };
+  message = 'Type here';
 
   getVal() {
     return 100;

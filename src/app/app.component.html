@@ -61,3 +61,17 @@
 <p [ngStyle]="myStyles">
   Quite something!
 </p>
+
+<!--two-way binding-->
+<h3>10. Two-way binding</h3>
+<label id="twoWayBinding">
+  <p>{{message}}</p>
+  <input type="text" [(ngModel)]="message">
+</label>
+
+<!--html attribute vs dom property-->
+<h3>HTML attribute vs DOM property</h3>
+<label id="htmlAtt">
+  Enter your name:
+  <input type="text" value="Sarah">
+</label>

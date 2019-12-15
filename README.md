@@ -219,6 +219,69 @@ _binding: style_
   </li>
 </ul>
 ```
+_binding: event_
+
+### view-to-source-to-view
+| Type  | Syntax |
+|---|---|
+| Two-way  | \[\(target\)\)="expression"  |
+|  | bindon-target="expression" |
+
+```html
+<label>
+  <p>{{message}}</p>
+  <input type="text" [(ngModel)]="message">
+</label>
+```
+_binding: two-way_
+
+Binding types other than interpolation have a target name to the left of the equal sign, either surrounded by punctuation, **[] or ()**, or preceded by a prefix: **bind-, on-, bindon-**.
+
+The target of a binding is the property or event inside the binding punctuation: **[], () or \[()\]**.
+
+## HTML attributes vs. DOM property
+The distinction between an **HTML attribute** and a **DOM property** is key to understanding how Angular binding works.
+
+It is important to remember that HTML attribute and the DOM property are different things, even when they have the same name. In Angular, **the only role of HTML attributes is to initialize element and directive state.**
+
+Attributes initialize DOM properties and then they are done. Property values can change; attribute values can't.
+
+```html
+<label id="htmlAtt">
+  Enter your name:
+  <input type="text" value="Sarah">
+</label>
+
+```
+
+```javascript
+  it('HTML attribute vs DOM property', async () => {
+    const inputBox = fixture.debugElement.query(By.css('#htmlAtt > input')).nativeElement;
+    expect(inputBox.getAttribute('value')).toEqual('Sarah');
+    expect(inputBox.value).toEqual('Sarah');
+
+    inputBox.value = 'Sally';
+    inputBox.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(inputBox.getAttribute('value')).toEqual('Sally');
+    expect(inputBox.value).toEqual('Foo');
+  });
+
+```
+_example test for html attribute vs dom property_
+
+When the user enters "Sally" into the <input>, the DOM element value property becomes "Sally". However, if you look at the HTML attribute value using input.getAttribute('value'), you can see that the attribute remains unchanged—it returns "Sarah".
+
+```html
+<input [disabled]="condition ? true : false">
+<input [attr.disabled]="condition ? 'disabled' : null">
+
+```
+
+Use property binding over attribute binding as it is more intuitive (being a boolean value), has a shorter syntax, and is more performant.
+
 
 ## Source
 [Angular Documentation](https://angular.io/guide/template-syntax)

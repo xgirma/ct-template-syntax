@@ -83,4 +83,32 @@ describe('AppComponent', () => {
     expect(compiled.querySelector('#eventObject > p').textContent)
       .toEqual('Text Submitted successfully!');
   });
+
+  it('two-way binding', async () => {
+    expect(compiled.querySelector('#twoWayBinding > p').textContent)
+      .toEqual('Type here');
+
+    const inputBox = fixture.debugElement.query(By.css('#twoWayBinding > input')).nativeElement;
+    inputBox.value = 'Foo Bar';
+    inputBox.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('#twoWayBinding > p').textContent)
+      .toEqual('Foo Bar');
+  });
+
+  it('HTML attribute vs DOM property', async () => {
+    const inputBox = fixture.debugElement.query(By.css('#htmlAtt > input')).nativeElement;
+    expect(inputBox.getAttribute('value')).toEqual('Sarah');
+    expect(inputBox.value).toEqual('Sarah');
+
+    inputBox.value = 'Foo';
+    inputBox.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(inputBox.getAttribute('value')).toEqual('Sarah');
+    expect(inputBox.value).toEqual('Foo');
+  });
 });
