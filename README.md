@@ -347,7 +347,7 @@ export class AppComponent {
 _app.component.ts_
 
 ```html
-<app-list-item [items]="currentItem"></app-list-item>
+<app-item-detail [childItem]="parentItem"></app-item-detail>
 ```
 _app.component.html_
 
