@@ -8,7 +8,7 @@ The \<script\> element is a notable exception; it is forbidden, eliminating the 
     
 In practice, \<script\> is ignored and a warning appears in the browser console.
 
-## Interpolation {{...}}link
+## Interpolation {{...}} link
 Interpolation refers to embedding expressions into marked up text.
 ```html
 <h3>Current customer: {{ currentCustomer }}</h3>
