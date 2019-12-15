@@ -1,1 +1,3 @@
-<p>list-item works!</p>
+<ul *ngFor="let childItem of childItems">
+  <li>{{childItem.id}} {{childItem.name}}</li>
+</ul>

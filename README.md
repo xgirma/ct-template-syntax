@@ -371,6 +371,63 @@ _item-detail.component.ts_
 ```
 _item-detail.component.html_
 
+#### Passing object
+```javascript
+import { Component, ViewChild, ElementRef } from '@angular/core';
+
+import { Item } from './models/item';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  parentItems: Item[] = [
+    {
+      id: 21,
+      name: 'phone'
+    },
+    {
+      id: 22,
+      name: 'iPad'
+    }
+  ];
+}
+
+```
+_app.component.ts_
+
+```html
+<app-list-item [childItems]="parentItems"></app-list-item>
+
+```
+_app.component.html_
+
+```javascript
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Item } from '../models/item';
+
+@Component({
+  selector: 'app-list-item',
+  templateUrl: './list-item.component.html',
+  styleUrls: ['./list-item.component.css']
+})
+export class ListItemComponent implements OnInit {
+  @Input() childItems: Item[];
+}
+```
+_list-item.component.ts_
+
+```html
+<ul *ngFor="let childItem of childItems">
+  <li>{{childItem.id}} {{childItem.name}}</li>
+</ul>
+
+```
+_list-item.component.html_
+
 
 
 ## Source

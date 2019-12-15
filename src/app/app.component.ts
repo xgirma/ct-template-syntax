@@ -3,6 +3,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Customer } from './customer';
 import { Car } from './cars';
 import { ICar } from './models/car';
+import { Item } from './models/item';
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,16 @@ export class AppComponent {
   };
   message = 'Type here';
   parentItem = 'Parent item passed to child';
+  parentItems: Item[] = [
+    {
+      id: 21,
+      name: 'phone'
+    },
+    {
+      id: 22,
+      name: 'iPad'
+    }
+  ];
 
   getVal() {
     return 100;
