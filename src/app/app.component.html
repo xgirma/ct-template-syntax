@@ -38,3 +38,10 @@
     <button (click)="deleteCustomer(customer.id)">Delete {{customer.name}}</button>
   </li>
 </ul>
+
+<!--template $event object-->
+<h3>Template $event object</h3>
+<div id="eventObject">
+  <p>{{ text }}</p>
+  <button class="btn" (click)='submit($event)'>Submit</button>
+</div>

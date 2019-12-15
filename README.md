@@ -3,9 +3,9 @@
 ## HTML in templates
 HTML is the language of the Angular template. Almost all HTML syntax is valid template syntax. 
 
-    The <script> element is a notable exception; it is forbidden, eliminating the risk of script injection attacks. 
+The \<script\> element is a notable exception; it is forbidden, eliminating the risk of script injection attacks. 
     
-    In practice, <script> is ignored and a warning appears in the browser console.
+In practice, \<script\> is ignored and a warning appears in the browser console.
 
 ## Interpolation {{...}}link
 Interpolation refers to embedding expressions into marked up text.
@@ -51,11 +51,11 @@ _template reference variable_
 ## Expression guidelines
 When using template expressions follow these guidelines:
 
-    Simplicity
+1. Simplicity
+   
+2. Quick execution
     
-    Quick execution
-    
-    No visible side effects
+3. No visible side effects
     
 Angular executes template expressions after every change detection cycle. Change detection cycles are triggered by many asynchronous activities such as promise resolutions, HTTP results, timer events, key presses and mouse moves.
 Expressions should finish quickly or the user experience may drag, especially on slower devices. Consider caching values when their computation is expensive.
@@ -75,27 +75,25 @@ Template statement appearing in quotes to the right of the = symbol as in (event
 
 ```
 
-    Template expressions cannot refer to anything in the global namespace, except undefined. 
-    
-    They can't refer to window or document. Additionally, they can't call console.log() or 
-    
-    Math.max() and they are restricted to referencing members of the expression context.
+Template expressions cannot refer to anything in the global namespace, except undefined. 
+They can't refer to window or document. Additionally, they can't call console.log() or 
+Math.max() and they are restricted to referencing members of the expression context.
 
-    A template statement has a side effect. That's the whole point of an event. 
-    
-    It's how you update application state from user action.
+A template statement has a side effect. That's the whole point of an event. 
+
+It's how you update application state from user action.
     
 Responding to events is the other side of Angular's "unidirectional data flow". You're free to change anything, anywhere, during this turn of the event loop.
 
 However, certain JavaScript syntax is not allowed:
 
-    new
-    
-    increment and decrement operators, ++ and --
-    
-    operator assignment, such as += and -=
-    
-    the bitwise operators | and &
+1. new
+
+2. increment and decrement operators, ++ and --
+
+3. operator assignment, such as += and -=
+
+4.the bitwise operators | and &
 
 ## Statement context
 As with expressions, statements can refer only to what's in the statement context such as an event handling method of the component instance.
@@ -110,23 +108,20 @@ The statement context is typically the component instance. The deleteHero in (cl
 
 ```
 
-The statement context may also refer to 
-
-    properties of the template's own context
+The statement context may also refer to properties of the template's own context
     
-    the template $event object
+1. template $event object
      
-    a template input variable (let customer), and 
+2. template input variable (let customer), and 
     
-    a template reference variable (#heroForm)
-
-### Properties of the template's own context
-```html
-
-```
+3. template reference variable (#firstNameInput)
 
 ### The template $event object
 ```html
+<div>
+  <p>{{ text }}</p>
+  <button class="btn" (click)='submit($event)'>Submit</button>
+</div>
 
 ```
 

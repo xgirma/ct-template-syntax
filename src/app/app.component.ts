@@ -19,11 +19,12 @@ export class AppComponent {
   fullName: string;
   // Reference firstNameInput variable inside Component
   @ViewChild('firstName', { static: false }) nameInputRef: ElementRef;
-
+  buttonSwitch = false;
   customers = [
     new Customer(1, 'Foo'),
     new Customer(2, 'Bar')
   ];
+  text = 'Text Not submitted yet.';
 
   getVal() {
     return 100;
@@ -35,5 +36,9 @@ export class AppComponent {
 
   deleteCustomer(id) {
     this.customers = this.customers.filter(customer => customer.id !== id);
+  }
+
+  submit($event) {
+    this.text = 'Text Submitted successfully!';
   }
 }
