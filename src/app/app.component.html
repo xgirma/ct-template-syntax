@@ -108,3 +108,27 @@
 <!--Content security-->
 <h3>16. Content security</h3>
 <p><span>"{{evilTitle}}" is the <i>interpolated</i> evil title.</span></p>
+
+<!--two-way binding-->
+<h3>17. ngClass</h3>
+<div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+
+<!-- NgStyle -->
+<h3>18. ngStyle</h3>
+<div id="styleTest" [style.font-size]="isSpecial ? 'x-large' : 'smaller'">
+  This div is x-large or smaller.
+</div>
+
+<!--ngModel-->
+<h3>19. ngModel</h3>
+<div id="teaPot">
+  <p>Item name: {{itemName}}</p>
+  <label for="example-ngModel">[(ngModel)]:</label>
+  <input [(ngModel)]="itemName" id="example-ngModel">
+</div>
+
+<!--ngFor with index-->
+<h3>ngFor with index</h3>
+<ul *ngFor="let item of items; let i=index">
+  <li>{{i + 1}} - {{item}}</li>
+</ul>

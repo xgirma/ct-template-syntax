@@ -42,6 +42,10 @@ export class AppComponent {
     }
   ];
   evilTitle = 'Template <script>alert("evil never sleeps")</script> Syntax';
+  isSpecial = true;
+  itemName = 'ItemName';
+  items = ["Car", "Boat", "Private Jet"];
+
 
   getVal() {
     return 100;

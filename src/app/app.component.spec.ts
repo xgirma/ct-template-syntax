@@ -113,4 +113,43 @@ describe('AppComponent', () => {
     expect(inputBoxNow.getAttribute('value')).toEqual('Sarah');
     expect(inputBoxNow.value).toEqual('Foo');
   });
+
+  it('should toggle using ngClass and ngStyle', async() => {
+    component.isSpecial = true;
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('.special').textContent).toEqual('This div is special');
+    expect(compiled.querySelector('#styleTest').getAttribute('style'))
+      .toEqual('font-size: x-large;');
+  });
+
+  it('should toggle using ngClass and ngStyle', async() => {
+    component.isSpecial = false;
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('.special')).toEqual(null);
+    expect(compiled.querySelector('#styleTest').getAttribute('style'))
+      .toEqual('font-size: smaller;');
+  });
+
+  it('ngModel', async () => {
+    const placeHolder = 'Item name place holder';
+    component.itemName = placeHolder;
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('#teaPot > p').textContent)
+      .toEqual(`Item name: ${placeHolder}`);
+
+    const inputBox = fixture.debugElement.query(By.css('#teaPot > input')).nativeElement;
+    inputBox.value = 'Foo Bar';
+    inputBox.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    expect(compiled.querySelector('#teaPot > p').textContent)
+      .toEqual(`Item name: Foo Bar`);
+  });
 });
