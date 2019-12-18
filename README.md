@@ -465,6 +465,134 @@ However, **when setting an element property to a non-string data value, you must
 
 ## Attribute, class, and style bindings
 
+### Attribute binding
+Attribute binding syntax resembles property binding, but instead of an element property between brackets, start with the prefix attr, followed by a dot (.), and the name of the attribute. You then set the attribute value, using an expression that resolves to a string, or remove the attribute when the expression resolves to null.
+
+One of the primary use cases for attribute binding is to set ARIA attributes, as in this example: **attr.aria-label** and **colspan**.
+```html
+<!-- create and set an aria attribute for assistive technology -->
+<button [attr.aria-label]="actionName">{{actionName}} with Aria</button>
+<table>
+  <tr>
+    <th>Month</th><th>Savings</th>
+  </tr>
+  <tr>
+    <td>January</td><td>$100</td>
+  </tr>
+  <tr>
+    <td>February</td><td>$80</td>
+  </tr>
+  <tr>
+    <td [colSpan]="2">Sum: $180</td>
+  </tr>
+</table>
+
+```
+
+### Class binding
+Add and remove CSS class names from an element's class attribute with a class binding.
+
+```html
+<div class="item clearance special">Item clearance special</div>
+
+```
+
+### Style binding
+```html
+<button [style.color]="isSpecial ? 'red': 'green'">Red</button>
+<button [style.background-color]="canSave ? 'cyan': 'grey'" >Save</button>
+
+```
+This technique is suitable for setting a single style, but consider the NgStyle directive when setting several inline styles at the same time.
+
+## Event binding (event)
+Event binding allows you to listen for certain events such as keystrokes, mouse movements, clicks, and touches. 
+
+```html
+<button (click)="onSave($event)">Save</button>
+<button on-click="onSave($event)">on-click Save</button>
+
+```
+
+## Built-in directives
+Angular offers two kinds of built-in directives: attribute directives and structural directives.
+
+### Built-in attribute directives
+Attribute directive listen to and modify the behaviour of other HTML elements, attributes, properties, and components. 
+
+    1. NgClass—adds and removes a set of CSS classes.
+    
+    2. NgStyle—adds and removes a set of HTML styles.
+    
+    3. NgModel—adds two-way data binding to an HTML form element.
+
+#### ngClass
+```html
+<div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
+
+```
+
+#### ngStyle
+```html
+<div id="styleTest" [style.font-size]="isSpecial ? 'x-large' : 'smaller'">
+  This div is x-large or smaller.
+</div>
+
+```
+
+#### ngModel
+```html
+<div id="teaPot">
+  <p>Item name: {{itemName}}</p>
+  <label for="example-ngModel">[(ngModel)]:</label>
+  <input [(ngModel)]="itemName" id="example-ngModel">
+</div>
+
+```
+
+### Built-in structural directives
+Structural directives are responsible for HTML layout.
+
+    1. NgIf—conditionally creates or destroys subviews from the template.
+    
+    2. NgFor—repeat a node for each item in a list.
+    
+    3. NgSwitch—a set of directives that switch among alternative views.
+   
+#### ngIf
+```html
+<app-item-detail *ngIf="isActive" [item]="item"></app-item-detail>
+
+``` 
+
+#### Show/hide vs. ngIf
+Hiding an element is different from removing it with `ngIf`. 
+When you hide an element, that element and all of its descendants remain in the DOM. 
+All components for those elements stay in memory and Angular may continue to check for changes.
+
+```html
+<app-item-detail [class.hidden]="isSpecial"></app-item-detail>
+
+```
+ngIf works differently. When ngIf is false. Angular removes the element and its descendants from the DOM.
+It destroys their components, freeing up resources, which results in a better user experience.
+
+Another advantage of ngIf is that you can use it to **guard against null**.
+
+#### ngFor
+```html
+<div *ngFor="let item of items">{{item.name}}</div>
+
+```
+The string assigned to *ngFor is not a template expression. 
+Rather, it's a **microsyntax** — a little language of its own that Angular interprets.
+
+#### *ngFor with index
+```html
+<div *ngFor="let item of items; let i=index">{{i + 1}} - {{item.name}}</div>
+
+```
+
 
 
 ## Source
