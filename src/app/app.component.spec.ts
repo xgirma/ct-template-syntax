@@ -114,7 +114,7 @@ describe('AppComponent', () => {
     expect(inputBoxNow.value).toEqual('Foo');
   });
 
-  it('should toggle using ngClass and ngStyle', async() => {
+  it('should toggle using ngClass and ngStyle', async () => {
     component.isSpecial = true;
     fixture.detectChanges();
     await fixture.whenStable();
@@ -124,7 +124,7 @@ describe('AppComponent', () => {
       .toEqual('font-size: x-large;');
   });
 
-  it('should toggle using ngClass and ngStyle', async() => {
+  it('should toggle using ngClass and ngStyle', async () => {
     component.isSpecial = false;
     fixture.detectChanges();
     await fixture.whenStable();
