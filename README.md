@@ -593,6 +593,38 @@ Rather, it's a **microsyntax** — a little language of its own that Angular int
 
 ```
 
+#### *ngSwitch
+NgSwitch is a set of three cooperating directives: **NgSwitch**, **NgSwitchCase**, and **NgSwitchDefault**.
+
+he NgSwitchCase and NgSwitchDefault directives are **structural directives** because they add or remove elements from the DOM.
+
+```html
+<div *ngFor="let item of items">
+  <div [ngSwitch]="item">
+    <p *ngSwitchCase="'Car'" [style.color]="red">Red car</p>
+    <p *ngSwitchCase="'Boat'" [style.color]="blue">Blue Boat</p>
+    <p *ngSwitchDefault [style.color]="green">Green item</p>
+  </div>
+</div>
+
+```
+## Template Reference variable
+```html
+<div>
+  <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <label for="name">
+      Name: <input class="form-control" name="name" ngModel required />
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div [hidden]="!itemForm.form.valid">
+    <p>{{submitMessage}}</p>
+  </div>
+</div>
+
+```
+
 
 
 ## Source

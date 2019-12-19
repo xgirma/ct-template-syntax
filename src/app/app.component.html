@@ -114,7 +114,7 @@
 <div [ngClass]="isSpecial ? 'special' : ''">This div is special</div>
 
 <!-- NgStyle -->
-<h3>18. ngStyle</h3>
+<h3>18. ngStyle</h3>itemForm
 <div id="styleTest" [style.font-size]="isSpecial ? 'x-large' : 'smaller'">
   This div is x-large or smaller.
 </div>
@@ -128,7 +128,32 @@
 </div>
 
 <!--ngFor with index-->
-<h3>ngFor with index</h3>
+<h3>20. ngFor with index</h3>
 <ul *ngFor="let item of items; let i=index">
   <li>{{i + 1}} - {{item}}</li>
 </ul>
+
+<!--ngSwitch-->
+<h3>21. ngSwitch</h3>
+<div *ngFor="let item of items" id="switchDemo">
+  <div [ngSwitch]="item">
+    <p *ngSwitchCase="'Car'" [style.color]="red">Red car</p>
+    <p *ngSwitchCase="'Boat'" [style.color]="blue">Blue Boat</p>
+    <p *ngSwitchDefault [style.color]="green">Green item</p>
+  </div>
+</div>
+
+<!--template reference variable-->
+<h3>22. Template reference variables</h3>
+<div id="tempRef">
+  <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
+    <label for="name">
+      Name: <input class="form-control" name="name" ngModel required />
+    </label>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div [hidden]="!itemForm.form.valid">
+    <p>{{submitMessage}}</p>
+  </div>
+</div>

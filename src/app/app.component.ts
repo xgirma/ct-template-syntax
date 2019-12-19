@@ -1,4 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import { Customer } from './customer';
 import { Car } from './cars';
@@ -45,7 +46,10 @@ export class AppComponent {
   isSpecial = true;
   itemName = 'ItemName';
   items = ['Car', 'Boat', 'Private Jet'];
-
+  red: any = 'red';
+  blue: any = 'blue';
+  green: any = 'green';
+  submitMessage;
 
   getVal() {
     return 100;
@@ -65,5 +69,9 @@ export class AppComponent {
 
   hasError() {
     return true;
+  }
+
+  onSubmit(itemForm) {
+    this.submitMessage = itemForm.value.name
   }
 }
