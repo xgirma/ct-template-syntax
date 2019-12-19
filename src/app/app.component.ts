@@ -72,6 +72,6 @@ export class AppComponent {
   }
 
   onSubmit(itemForm) {
-    this.submitMessage = itemForm.value.name
+    this.submitMessage = itemForm.value.name;
   }
 }

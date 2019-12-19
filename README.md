@@ -609,6 +609,8 @@ he NgSwitchCase and NgSwitchDefault directives are **structural directives** bec
 
 ```
 ## Template Reference variable
+A template reference variable is often a reference to a DOM element within a template. It can also refer to a directive (which contains a component), an element, TemplateRef, or a web component.
+
 ```html
 <div>
   <form #itemForm="ngForm" (ngSubmit)="onSubmit(itemForm)">
@@ -624,7 +626,15 @@ he NgSwitchCase and NgSwitchDefault directives are **structural directives** bec
 </div>
 
 ```
+You can use the **ref-** prefix alternative to **#**.
 
+```html
+<input ref-fax placeholder="fax number" />
+<button (click)="callFax(fax.value)">Fax</button>
+
+```
+
+## @Input() an @Output() properties
 
 
 ## Source
