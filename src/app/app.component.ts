@@ -1,5 +1,4 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
 
 import { Customer } from './customer';
 import { Car } from './cars';
@@ -50,6 +49,7 @@ export class AppComponent {
   blue: any = 'blue';
   green: any = 'green';
   submitMessage;
+  private duty;
 
   getVal() {
     return 100;
@@ -73,5 +73,9 @@ export class AppComponent {
 
   onSubmit(itemForm) {
     this.submitMessage = itemForm.value.name;
+  }
+
+  childRequest(request) {
+    this.duty = request;
   }
 }

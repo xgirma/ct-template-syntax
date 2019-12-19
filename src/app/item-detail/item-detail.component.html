@@ -1,1 +1,9 @@
 <p>{{childItem}}</p>
+
+<div>
+  <div [ngSwitch]="item">
+    <p *ngSwitchCase="'Car'">KIA, TOYOTA, RAM</p>
+    <p *ngSwitchCase="'Boat'">Sail Boat, Fishing Boat</p>
+    <p *ngSwitchDefault>Sonic Jet, Fighter Jet</p>
+  </div>
+</div>

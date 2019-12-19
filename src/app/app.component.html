@@ -157,3 +157,16 @@
     <p>{{submitMessage}}</p>
   </div>
 </div>
+
+<!--@input-->
+<h3>23. @Input() </h3>
+<div *ngFor="let item of items">
+  <app-item-detail [item]="item"></app-item-detail>
+</div>
+
+<!--@output-->
+<h3>24. @Output() </h3>
+<div>
+  My requests: {{duty}}
+  <app-item-detail (request)="childRequest($event)"></app-item-detail>
+</div>

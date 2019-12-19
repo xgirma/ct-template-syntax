@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-item-detail',
@@ -7,10 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ItemDetailComponent implements OnInit {
   @Input() childItem: string;
+  @Input() item: string;
+  @Output() request: EventEmitter<string> = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+    this.request.emit('I need a car');
   }
-
 }
